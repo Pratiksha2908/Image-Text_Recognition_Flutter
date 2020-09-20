@@ -1,0 +1,45 @@
+name: notes_spot
+description: A new Flutter application.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^0.1.3
+  image_picker: ^0.6.7+7
+  firebase_ml_vision: ^0.9.6+2
+  firebase_core: ^0.5.0
+  firebase_analytics: ^6.0.0
+  firebase_auth: ^0.18.0+1
+  cloud_firestore: ^0.14.0+2
+  pdf: ^1.11.1
+  printing: ^3.6.1
+  image_cropper: ^1.3.1
+  path_provider: ^1.6.16
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - images/
+
+  fonts:
+    - family: OpenSans
+      fonts:
+        - asset: assets/OpenSans-Bold.ttf
+        - asset: assets/OpenSans-BoldItalic.ttf
+        - asset: assets/OpenSans-Italic.ttf
+        - asset: assets/OpenSans-Regular.ttf
+
