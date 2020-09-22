@@ -13,28 +13,40 @@ import 'package:device_preview/device_preview.dart';
 import 'package:provider/provider.dart';
 import 'theme_manager.dart';
 
+// void main() {
+//   runApp(
+//     DevicePreview(//preview any device from any device, device orientation and dark mode, etc.
+//       enabled: !kReleaseMode,
+//       builder: (context) => NotesSpot(),
+//     ),
+//   );
+// }
+//
+// class NotesSpot extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       locale: DevicePreview.of(context).locale,
+//       builder: DevicePreview.appBuilder,
+//       debugShowCheckedModeBanner: false,
+//       home: ChangeNotifierProvider<ThemeNotifier>(
+//         create: (_) => ThemeNotifier(),
+//         child: ImageScreen(),
+//       ),
+//     );
+//   }
+// }
+
 void main() {
   runApp(
-    DevicePreview(//preview any device from any device, device orientation and dark mode, etc.
-      enabled: !kReleaseMode,
-      builder: (context) => NotesSpot(),
-    ),
-  );
-}
-
-class NotesSpot extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      locale: DevicePreview.of(context).locale,
-      builder: DevicePreview.appBuilder,
-      debugShowCheckedModeBanner: false,
-      home: ChangeNotifierProvider<ThemeNotifier>(
-        create: (_) => ThemeNotifier(),
-        child: ImageScreen(),
+      MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: ChangeNotifierProvider<ThemeNotifier>(
+         create: (_) => ThemeNotifier(),
+         child: ImageScreen(),
+        ),
       ),
-    );
-  }
+  );
 }
 
 
@@ -65,9 +77,27 @@ class _ImageScreenState extends State<ImageScreen> {
     });
   }
 
+  Future onPressedGetTxt() async{
+    Padding(
+      padding: EdgeInsets.all(20.0),
+      child: Center(
+        child: Card(
+          elevation: 10.0,
+          color: Colors.white70,
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Text(
+              '$recognizedText',
+              style: TextStyle(fontSize: 30.0),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   Future getText() async {
-    FirebaseVisionImage firebaseVisionImage =
-    FirebaseVisionImage.fromFile(_image);//_image
+    FirebaseVisionImage firebaseVisionImage = FirebaseVisionImage.fromFile(_image);//_image
     TextRecognizer textRecognizer = FirebaseVision.instance.textRecognizer();
     VisionText visionText =
     await textRecognizer.processImage(firebaseVisionImage);
@@ -129,13 +159,26 @@ class _ImageScreenState extends State<ImageScreen> {
           theme: theme.getTheme(),
           home: Scaffold(
             appBar: AppBar(
-              title: Text(
-                'Notes Spot',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.bold
-                ),
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'images/logo.png',
+                    fit: BoxFit.contain,
+                    height: 32,
+                  ),
+                  SizedBox(
+                    width: 4.0,
+                  ),
+                  Text(
+                    'Notes Spot',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold
+                    ),
+                  ),
+                ],
               ),
               actions: <Widget>[
                 IconButton(
@@ -224,12 +267,6 @@ class _ImageScreenState extends State<ImageScreen> {
                       textColor: Colors.white,
                     ),
                   ),
-                  // Container(
-                  //   child: GifImage(
-                  //     controller: controller,
-                  //     image: AssetImage("images/scanning.gif"),
-                  //   ),
-                  // ),
                   SizedBox(
                     height: 10.0,
                   ),
