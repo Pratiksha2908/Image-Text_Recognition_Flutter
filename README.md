@@ -1,4 +1,4 @@
-# Image Text Reading Application made by Flutter🔍
+# 🔎Image Text Reading Application made by Flutter
 
 A new Flutter application.
 
