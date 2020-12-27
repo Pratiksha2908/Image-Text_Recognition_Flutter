@@ -1,6 +1,8 @@
-# 🔎Image Text Reading Application made by Flutter
+# Image Text Recognition Application made by Flutter
 
-A new Flutter application.
+A Flutter application.
+
+img src="https://user-images.githubusercontent.com/71315238/103170800-2ee00300-486d-11eb-868a-94e19003a415.jpg" width="200" height="400" />    img src="https://user-images.githubusercontent.com/71315238/103170814-461ef080-486d-11eb-9ce5-2ca580e53915.jpg" width="200" height="400" /> 
 
 ## Getting Started
 
